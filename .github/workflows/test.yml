@@ -1,0 +1,20 @@
+name: test
+on:
+  pull_request:
+    branches: "**"
+defaults:
+  run:
+    working-directory: ./test
+jobs:
+  without-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+  with-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          config: config.pdf.yml

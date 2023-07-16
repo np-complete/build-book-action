@@ -1,0 +1,15 @@
+name: build book
+description: build book
+inputs:
+  config:
+    description: config file
+    required: true
+    default: config.yml
+runs:
+  using: composite
+  steps:
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundle-cache: true
+    - run: echo ${{ inputs.config }}
+      shell: bash
