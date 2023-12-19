@@ -13,7 +13,7 @@ runs:
         bundler-cache: true
     - run: echo "REVIEW_VERSION=`bundle info review --version | cut -d '.' -f 1-2`" >> $GITHUB_ENV
       shell: bash
-    - uses: masarakki/docker-alias@v2
+    - uses: masarakki/docker-alias@v3
       with:
         image: vvakame/review:${{ env.REVIEW_VERSION }}
         commands: review-pdfmaker
