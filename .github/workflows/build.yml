@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ${{ github.repository }}@${{ github.sha }}
+      - run: test -e Rakefile
   with-config:
     runs-on: ubuntu-latest
     steps:
@@ -18,3 +19,4 @@ jobs:
       - uses: ${{ github.repository }}@${{ github.sha }}
         with:
           config: config.pdf.yml
+      - run: test -e Rakefile
