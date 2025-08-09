@@ -11,6 +11,8 @@ runs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - run: cp -r "${GITHUB_ACTION_PATH}/shares/*" "${GITHUB_WORKSPACE}/"
+      shell: bash
     - run: echo "REVIEW_VERSION=`bundle info review --version | cut -d '.' -f 1-2`" >> $GITHUB_ENV
       shell: bash
     - uses: masarakki/docker-alias@v3
