@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./
+      - uses: ${{ github.repository }}@${{ github.sha }}
   with-config:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./
+      - uses: ${{ github.repository }}@${{ github.sha }}
         with:
           config: config.pdf.yml
