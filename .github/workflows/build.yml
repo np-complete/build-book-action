@@ -6,6 +6,17 @@ defaults:
   run:
     working-directory: ./test
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          working-directory: ./test
+      - run: test -e Rakefile
+      - run: test -e Gemfile
+      - run: test -e Gemfile.lock
+
   without-config:
     runs-on: ubuntu-latest
     steps:
