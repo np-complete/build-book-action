@@ -1,3 +1,10 @@
-task :pdf do
-  puts "rake pdf" 
+MD_FILES = FileList['*.md']
+RE_FILES = MD_FILES.ext('re')
+
+rule ".re" => ".md" do |t|
+  sh "md2review --render-link-in-footnote #{t.source} > #{t.name}"
+end
+
+task pdf: RE_FILES do
+  puts "rake pdf"
 end
