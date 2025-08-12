@@ -1,0 +1,7 @@
+PREFED:
+  - predef.re
+CHAPS:
+  - chap1.re
+  - chap2.re
+POSTDEF:
+  - postdef.re

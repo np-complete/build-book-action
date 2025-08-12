@@ -16,6 +16,7 @@ jobs:
       - run: test -e Rakefile
       - run: test -e Gemfile
       - run: test -e Gemfile.lock
+      - run: test -e chap1.re
 
   without-config:
     runs-on: ubuntu-latest
