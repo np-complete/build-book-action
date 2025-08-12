@@ -17,7 +17,11 @@ jobs:
       - run: test -e Gemfile
       - run: test -e Gemfile.lock
       - run: test -e chap1.re
-
+      - run: test -e book.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: book
+          path: book.pdf
   without-config:
     runs-on: ubuntu-latest
     steps:

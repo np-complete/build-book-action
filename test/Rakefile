@@ -6,5 +6,5 @@ rule ".re" => ".md" do |t|
 end
 
 task pdf: RE_FILES do
-  puts "rake pdf"
+  sh "review-pdfmaker config.yml"
 end
