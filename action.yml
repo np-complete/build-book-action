@@ -11,6 +11,12 @@ inputs:
 runs:
   using: composite
   steps:
+    - run: |
+        CLEAN_PATH=$(readlink -f "${{ github.action_path }}")
+        echo "CLEAN_ACTION_PATH=$CLEAN_PATH" >> $GITHUB_ENV
+      shell: bash
+    - run: cp -r "$CLEAN_ACTION_PATH/shares/." "${{ inputs.working-directory }}/"
+      shell: bash
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
