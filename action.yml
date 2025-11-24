@@ -17,14 +17,14 @@ runs:
       shell: bash
     - run: cp -r "$CLEAN_ACTION_PATH/shares/." "${{ inputs.working-directory }}/"
       shell: bash
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@8aeb6ff8030dd539317f8e1769a044873b56ea71 # v1.268.0
       with:
         bundler-cache: true
         working-directory: ${{ inputs.working-directory }}
     - run: echo "REVIEW_VERSION=`bundle info review --version | cut -d '.' -f 1-2`" >> $GITHUB_ENV
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-    - uses: masarakki/docker-alias@v3
+    - uses: masarakki/docker-alias@727b270d8133ccc1b5bcaf4b4064cfd7bf357553 # v3
       with:
         image: vvakame/review:${{ env.REVIEW_VERSION }}
         commands: review-pdfmaker
