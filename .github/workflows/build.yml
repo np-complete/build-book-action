@@ -13,6 +13,7 @@ jobs:
       - uses: ./
         with:
           working-directory: ./test
+      - run: cat config.yml
       - run: test -e Rakefile
       - run: test -e Gemfile
       - run: test -e Gemfile.lock
