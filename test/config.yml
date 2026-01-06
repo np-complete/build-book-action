@@ -1,4 +1,6 @@
 booktitle: Re:VIEWサンプル書籍
-aut: ["青木峰郎", "武藤健志", "高橋征義", "角征典"]
 date: 2025-08-12
 history: [["2025-08-12"]]
+coverimage: cover-a5.ai
+pdfmaker:
+  coverimage: cover-a5.ai

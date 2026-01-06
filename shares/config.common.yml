@@ -19,7 +19,7 @@ language: ja
 
 # 著者名。「, 」で区切って複数指定できる
 # 読みを入れる例 aut: [{name: "青木峰郎", file-as: "アオキミネロウ"}, {name: "武藤健志", file-as: "ムトウケンシ"}, {name: "高橋征義", file-as: "タカハシマサヨシ"}, {name: "角征典", file-as: "カドマサノリ"}]
-# aut: __INHERITED__
+aut: まさらっき
 
 # 以下はオプション
 # 以下はオプション(autと同じように配列書式で複数指定可能)。
@@ -56,6 +56,7 @@ language: ja
 # a-ths, ths: 監督者
 # a-trc, trc: 筆記・タイプ作業者
 # a-trl, trl: 翻訳者
+pbl: NP-complete
 
 # contact: 連絡先
 
@@ -109,7 +110,7 @@ toclevel: 3
 secnolevel: 2
 
 # 本文中に目次ページを作成するか。省略した場合はnull (作成しない)
-toc: true
+# toc: true
 
 # EPUB2標準の目次(NCX)以外に物理目次ファイルを作成するか。省略した場合はnull (作成しない)
 # ePUB3においてはこの設定によらず必ず作成される
@@ -120,10 +121,11 @@ toc: true
 #
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 # PDFMaker 固有の表紙設定は pdfmaker セクション内で上書き可能
-coverimage: cover.jpg
+coverimage: cover.pdf
 #
 # 表紙の後に大扉ページを作成するか。省略した場合はtrue (作成する)
 # titlepage: true
+titlepage: false
 #
 # 自動生成される大扉ページを上書きするファイル。ファイル名を指定すると大扉として入る (PDFMaker向けにはLaTeXソース断片、EPUBMaker向けにはHTMLファイル)
 # titlefile: null
@@ -381,7 +383,7 @@ pdfmaker:
   # TeX版で利用する表紙画像。
   # 仕上がりサイズ+塗り足し3mmありのPDFまたはIllustratorファイル（PDF互換オプション付き）を推奨。
   # 拡縮はされず「そのまま」貼り付けられる
-  coverimage: cover-a5.ai
+  coverimage: cover.pdf
   #
   # TeXコンパイル前に実行するプログラム。変換後のTeXソースを調整したいときに使用する。
   # 渡される引数1=作業用展開ディレクトリ、引数2=呼び出しを実行したディレクトリ
