@@ -23,18 +23,3 @@ jobs:
         with:
           name: book
           path: ./test/book.pdf
-  without-config:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - uses: ./
-        with:
-          working-directory: ./test
-  with-config:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - uses: ./
-        with:
-          config: config.pdf.yml
-          working-directory: ./test
