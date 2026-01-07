@@ -1,0 +1,12 @@
+require 'fileutils'
+
+task :convert_md do
+  FileList['*.md'].each do |file|
+    out = file.ext('re')
+    sh "md2review --render-link-in-footnote #{file} > #{out}"
+  end
+end
+
+task :pdf do
+  sh "review-pdfmaker config.yml"
+end

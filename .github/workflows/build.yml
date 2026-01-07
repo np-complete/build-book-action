@@ -13,6 +13,7 @@ jobs:
       - uses: ./
         with:
           working-directory: ./test
+      - run: cat config.yml
       - run: test -e Rakefile
       - run: test -e Gemfile
       - run: test -e Gemfile.lock
@@ -21,7 +22,7 @@ jobs:
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: book
-          path: book.pdf
+          path: ./test/book.pdf
   without-config:
     runs-on: ubuntu-latest
     steps:
