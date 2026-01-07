@@ -28,18 +28,6 @@ runs:
         sed -i '1i inherit: ["config.common.yml"]' config.yml
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-    - run: echo "REVIEW_VERSION=`bundle info review --version | cut -d '.' -f 1-2`" >> $GITHUB_ENV
+    - run: docker run --rm -v `pwd`:/work vvakame/review:5.9 /bin/sh -c "cd /work && review-pdfmaker config.yml"
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-    - uses: masarakki/docker-alias@727b270d8133ccc1b5bcaf4b4064cfd7bf357553 # v3
-      with:
-        image: vvakame/review:${{ env.REVIEW_VERSION }}
-        commands: review-pdfmaker
-    - run: rm `bundle exec which review-pdfmaker`
-      shell: bash
-      working-directory: ${{ inputs.working-directory }}
-    - run: bundle exec rake pdf
-      shell: bash
-      working-directory: ${{ inputs.working-directory }}
-      env:
-        REVIEW_CONFIG_FILE: ${{ inputs.config }}
