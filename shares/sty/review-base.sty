@@ -1,4 +1,4 @@
-\ProvidesClass{review-base}[2022/07/25]
+\ProvidesClass{review-base}[2021/06/04]
 \RequirePackage{ifthen}
 \@ifundefined{Hy@Info}{% for jsbook.cls
   \RequirePackage[dvipdfmx,bookmarks=true,bookmarksnumbered=true]{hyperref}
@@ -40,9 +40,6 @@
 \RequirePackage{amsthm}
 \RequirePackage{bm}
 \RequirePackage{tabularx}
-\RequirePackage{endnotesj}
-
-\def\enoteheading{}% endnotesj.styの後注前見出しおよび空行の出力を抑制
 
 %% if you use @<u>{} (underline), use jumoline.sty
 \IfFileExists{jumoline.sty}{
@@ -68,12 +65,9 @@
 \rubysetup{J}}{%
 \rubysetup{g}}
 
-\DeclareRobustCommand{\reviewtcy}[1]{\PackageError{review-base}{\reviewtcy is not allowed in yoko mode}{}}
-
 \ifthenelse{\equal{\review@documentclass}{utbook} \OR \equal{\review@documentclass}{tbook}}{%
 \newcommand{\headfont}{\gtfamily\sffamily\bfseries}
 \RequirePackage{plext}
-\DeclareRobustCommand{\reviewtcy}[1]{\rensuji{#1}}
 }{%
 }
 
@@ -214,9 +208,9 @@
 \renewcommand{\thesection}{\thepart.\@arabic\c@section}%
 }{}
 
-\newcommand{\reviewminicolumntitle}[2]{%
+\newcommand{\reviewminicolumntitle}[1]{%
 \review@ifempty{#1}{}{%
-  {\large ■#2: #1}\\}}
+  {\large \review@intn@memohead{}: #1}\\}}
 
 \renewcommand{\contentsname}{\review@toctitle}
 
@@ -226,35 +220,35 @@
 
 \newenvironment{reviewnote}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@notehead}
+\review@ifempty{#1}{}{\reviewminicolumntitle{#1}}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewmemo}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@memohead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewtip}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@tiphead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewinfo}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@infohead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewwarning}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@warninghead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewimportant}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@importanthead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewcaution}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@cautionhead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 \newenvironment{reviewnotice}[1][]{%
   \begin{reviewminicolumn}
-  \reviewminicolumntitle{#1}{\review@intn@noticehead}
+  \reviewminicolumntitle{#1}
 }{\end{reviewminicolumn}}
 
 \DeclareRobustCommand{\reviewkw}[1]{\textbf{\textgt{#1}}}
@@ -277,11 +271,6 @@
   \def\reviewinsert#1{#1}
   \def\reviewstrike#1{#1}
   \def\reviewunderline#1{#1}
-  \def\reviewtt#1{#1}
-  \def\reviewcode#1{#1}
-  \def\reviewtti#1{#1}
-  \def\reviewttb#1{#1}
-  \let\reviewicon\@gobble
 }
 \newif\ifreview@ba@break
 \def\review@ba@end{\review@ba@end@}
@@ -327,19 +316,15 @@
   \review@ba@breaktrue
   \review@break@all@a
 }
-\DeclareRobustCommand{\reviewtt}[1]{{\frenchspacing\ttfamily\reviewbreakall{#1}}}
-\DeclareRobustCommand{\reviewcode}[1]{{\frenchspacing\ttfamily\reviewbreakall{#1}}}
-\DeclareRobustCommand{\reviewtti}[1]{{\frenchspacing\ttfamily\itshape\reviewbreakall{#1}}}
-\DeclareRobustCommand{\reviewttb}[1]{{\frenchspacing\ttfamily\bfseries\reviewbreakall{#1}}}
+\DeclareRobustCommand{\reviewtt}[1]{{\ttfamily\reviewbreakall{#1}}}
+\DeclareRobustCommand{\reviewcode}[1]{{\ttfamily\reviewbreakall{#1}}}
+\DeclareRobustCommand{\reviewtti}[1]{{\ttfamily\itshape\reviewbreakall{#1}}}
+\DeclareRobustCommand{\reviewttb}[1]{{\ttfamily\bfseries\reviewbreakall{#1}}}
 
 \DeclareRobustCommand{\reviewbou}[1]{\kenten{#1}}
 
 \DeclareRobustCommand{\reviewinsert}[1]{\Underline{#1}}
 \DeclareRobustCommand{\reviewstrike}[1]{\Midline{#1}}
-\DeclareRobustCommand{\reviewicon}[1]{\includegraphics[]{#1}}
-% アイコンの高さを文字の高さに合わせたいときには、以下をreview-custom.styに記述してください:
-% \DeclareRobustCommand{\reviewicon}[1]{\includegraphics[height=0.9zw]{#1}}
-
 %%%% for ulem.sty:
 %%\renewcommand{\reviewstrike}[1]{\sout{#1}}
 
