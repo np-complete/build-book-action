@@ -1,8 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    base64 (0.3.0)
     csv (0.1.0)
     image_size (3.4.0)
+    logger (1.7.0)
     md2review (1.12.1)
       redcarpet (> 2.0.0)
     nkf (0.2.0)
@@ -10,9 +12,11 @@ GEM
       tty-color (~> 0.5)
     rake (13.3.1)
     redcarpet (3.6.1)
-    review (5.10.0)
+    review (5.11.0)
+      base64
       csv
       image_size
+      logger
       nkf
       rexml
       rouge
@@ -31,7 +35,7 @@ PLATFORMS
 DEPENDENCIES
   md2review
   rake
-  review (= 5.10.0)
+  review (= 5.11.0)
 
 BUNDLED WITH
    2.4.10
