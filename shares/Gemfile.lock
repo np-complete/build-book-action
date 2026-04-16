@@ -10,7 +10,7 @@ GEM
     nkf (0.2.0)
     pastel (0.8.0)
       tty-color (~> 0.5)
-    rake (13.3.1)
+    rake (13.4.2)
     redcarpet (3.6.1)
     review (5.11.0)
       base64
