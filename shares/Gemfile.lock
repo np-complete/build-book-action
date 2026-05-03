@@ -3,7 +3,7 @@ GEM
   specs:
     base64 (0.3.0)
     csv (3.3.5)
-    image_size (3.4.0)
+    image_size (3.5.0)
     logger (1.7.0)
     md2review (1.12.1)
       redcarpet (> 2.0.0)
@@ -24,7 +24,7 @@ GEM
       tty-logger
     rexml (3.4.4)
     rouge (4.7.0)
-    rubyzip (3.2.2)
+    rubyzip (3.3.0)
     tty-color (0.6.0)
     tty-logger (0.6.0)
       pastel (~> 0.8)
