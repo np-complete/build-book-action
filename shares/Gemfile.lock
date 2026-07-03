@@ -25,7 +25,7 @@ GEM
     rexml (3.4.4)
     rouge (5.0.0)
       strscan (~> 3.1)
-    rubyzip (3.4.0)
+    rubyzip (3.4.1)
     strscan (3.1.8)
     tty-color (0.6.0)
     tty-logger (0.6.0)
