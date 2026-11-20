@@ -17,7 +17,7 @@ runs:
       shell: bash
     - run: cp -r "$CLEAN_ACTION_PATH/shares/." "${{ inputs.working-directory }}/"
       shell: bash
-    - uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@be3c7df29b3349ec6bcfc6b4792f1cf9f5237d18 # master
       with:
         bundler-cache: true
         working-directory: ${{ inputs.working-directory }}
