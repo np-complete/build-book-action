@@ -25,6 +25,12 @@
     {
       "matchManagers": ["github-actions"],
       "groupName": "github-actions"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["ruby/setup-ruby"],
+      "pinDigests": false,
+      "rangeStrategy": "replace"
     }
   ],
   "vulnerabilityAlerts": {
